@@ -1,0 +1,51 @@
+molecule_number,Group,group,mechanisms_active,smiles,pKa,pKaH
+28,Aryl boronic acid,ABA,k2Ar,COc1ccc(B(O)O)cc1,11.78,
+44,Reactive basic heterocycle,RBH,k4,OB(O)c1ccccn1,10.76,3.52
+50,Non-basic boronic acid,NBBA,"k1, k2, k2cat",OB(O)c1ccsc1,8.9,
+51,Non-basic boronic acid,NBBA,"k1, k2, k2cat",OB(O)c1ccco1,10.29,
+52,Non-basic boronic acid,NBBA,"k1, k2, k2cat",OB(O)c1cccs1,10.38,
+54,Non-basic boronic acid,NBBA,"k1, k2, k2cat",C=CB(O)O,11.21,
+55,Non-basic boronic acid,NBBA,"k1, k2, k2cat",OB(O)C1CC1,12.72,
+56,Non-basic boronic acid,NBBA,"k1, k2, k2cat",CB(O)O,8.11,
+57,Non-basic boronic acid,NBBA,"k1, k2, k2cat",OB(O)C1CCC1,6.01,
+58,Non-basic boronic acid,NBBA,"k1, k2, k2cat",OB(O)C1CCCCC1,7.47,
+60,Other basic boronic acids,OBH,"k1, k2, k3, k4",OB(O)c1cn[nH]c1,11.61,1.26
+61,Other basic boronic acids,OBH,"k1, k2, k3, k4",Cc1noc(C)c1B(O)O,10.45,0.04
+62,Other basic boronic acids,OBH,"k2, k4",OB(O)c1cncnc1,8.18,0.14
+63,Other basic boronic acids,OBH,"k2, k4",OB(O)c1cccnc1,9.76,3.6
+64,Other basic boronic acids,OBH,"k2, k4, k5",OB(O)c1ccncc1,8.94,3.36
+65,Other basic boronic acids,OBH,"k2, k4, k5",OB(c1c2c(NC=C2)ncc1)O,9.9,2.95
+66,Reactive basic heterocycle,RBH,"k2, k4",OB(O)c1cncs1,8.41,1.62
+67,Reactive basic heterocycle,RBH,"k2, k4",Cn1nccc1B(O)O,8.82,1.08
+68,Reactive basic heterocycle,RBH,"k2, k4",OB(O)c1ccn[nH]1,9.11,1.36
+69,Reactive basic heterocycle,RBH,k4,COc1cccc(B(O)O)n1,9.54,3.16
+70,Reactive basic heterocycle,RBH,k4,OB(O)c1cccc(C(F)(F)F)n1,8.49,-1.06
+71,Aryl boronic acid,ABA,k2Ar,OB(O)c1c(F)cccc1F,9.15,
+72,Aryl boronic acid,ABA,k2Ar,OB(O)c1c(F)c(F)c(F)c(F)c1F,7.67,
+73,Aryl boronic acid,ABA,k2Ar,OB(O)c1ccccc1,11.25,
+74,Aryl boronic acid,ABA,k2Ar,OB(O)c1ccccc1F,10.14,
+75,Aryl boronic acid,ABA,k2Ar,OB(O)c1cccc(F)c1,10.46,
+76,Aryl boronic acid,ABA,k2Ar,OB(O)c1ccc(F)cc1,10.97,
+77,Aryl boronic acid,ABA,k2Ar,OB(O)c1cccc(F)c1F,9.51,
+78,Aryl boronic acid,ABA,k2Ar,OB(O)c1ccc(F)cc1F,10.02,
+79,Aryl boronic acid,ABA,k2Ar,OB(O)c1cc(F)ccc1F,9.34,
+80,Aryl boronic acid,ABA,k2Ar,OB(O)c1ccc(F)c(F)c1,10.34,
+81,Aryl boronic acid,ABA,k2Ar,OB(O)c1cc(F)cc(F)c1,9.78,
+82,Aryl boronic acid,ABA,k2Ar,OB(O)c1ccc(F)c(F)c1F,9.06,
+83,Aryl boronic acid,ABA,k2Ar,OB(O)c1cc(F)cc(F)c1F,8.74,
+84,Aryl boronic acid,ABA,k2Ar,OB(O)c1cc(F)c(F)cc1F,9,
+85,Aryl boronic acid,ABA,k2Ar,OB(O)c1cc(F)c(F)c(F)c1,9.44,
+86,Aryl boronic acid,ABA,k2Ar,OB(O)c1cc(F)c(F)c(F)c1F,8.91,
+87,Aryl boronic acid,ABA,k2Ar,OB(O)c1c(F)ccc(F)c1F,8.66,
+88,Aryl boronic acid,ABA,k2Ar,OB(O)c1c(F)cc(F)cc1F,9.03,
+89,Aryl boronic acid,ABA,k2Ar,OB(O)c1c(F)cc(F)c(F)c1F,8.39,
+90,Aryl boronic acid,ABA,k2Ar,OB(O)c1c(F)c(F)cc(F)c1F,7.97,
+91,Aryl boronic acid,ABA,k2Ar,COc1ccc(B(O)O)c(F)c1,10.78,
+92,Aryl boronic acid,ABA,k2Ar,OB(O)c1ccc(C(F)(F)F)cc1F,9.04,
+93,Aryl boronic acid,ABA,k2Ar,FC1=C(B(O)O)C=C([N+]([O-])=O)C=C1,8.22,
+94,Aryl boronic acid,ABA,k2Ar,COc1cc(F)c(B(O)O)c(F)c1,9.56,
+95,Aryl boronic acid,ABA,k2Ar,COc1c(F)c(F)c(B(O)O)c(F)c1F,8.33,
+96,Aryl boronic acid,ABA,k2Ar,OB(O)c1cc(C(F)(F)F)cc(C(F)(F)F)c1,9.38,
+97,Aryl boronic acid,ABA,k2Ar,OB(O)C1=CC([N+]([O-])=O)=CC([N+]([O-])=O)=C1,7.91,
+98,Aryl boronic acid,ABA,k2Ar,Cc1ccc(B(O)O)cc1,11.78,
+99,Aryl boronic acid,ABA,k2Ar,OB(O)c1cccc(Cl)c1,10.56,
