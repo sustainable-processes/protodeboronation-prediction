@@ -1,75 +1,28 @@
+# The functions within this python file are for generating predictions of 
+#   protodeboronation using your own DFT and pKa/pKaH data. Parameters for 
+#   the linear sklearn models are loaded from a pickle file.
+# Constructor takes the DFT calculated energy for the active mechanistic
+#   pathways, all other mechanistic pathways should be set to None
+#       Example: k1 = 0.0152523, k2 = -0.03231252, k2Ar = None, (...)
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import pickle
 
 
 class BoronicAcid:
-    def __init__(self, molecule_ID):
-        self.molecule_ID = (
-            molecule_ID  # For molecule numbering please refer to the paper
-        )
-        self._predict_max_mechanism_rates()
-
-    def _extract_delta_E(self, mechanism: str):
-        """
-        Each mechanism follow the scheme transition state -> products
-        The energy of each molecule/molecular structure was carried out using DFT
-        Taking the difference in energy between the products and the transition state yields delta_E
-        This energy difference was saved in a csv file
-        Each boronic acid can degrade along one or more mechanistic pathways
-
-        This function extracts delta_E for a particular mechanism (e.g. 'k1')
-            of self.molecule_ID and returns delta_E: float
-
-        """
-        # Only these 7 mechanisms are defined for boronic acids of type -B(O)O
-        assert mechanism in ["k1", "k2", "k2Ar", "k2cat", "k3", "k4", "k5"]
-
-        if self.molecule_ID < 100:  # It's a Cox molecule
-            df = pd.read_csv(f"data/Cox-molecules/{mechanism}.csv")
-        elif self.molecule_ID >= 100:  # It's a Novel molecule
-            df = pd.read_csv(f"data/Novel-molecules/{mechanism}.csv")
-        delta_E = df.loc[df["molecule_number"] == self.molecule_ID, "delta_E"]
-        delta_E = list(delta_E)
-
-        try:
-            delta_E = delta_E[0]
-            return delta_E
-        except IndexError:
-            return None
-
-    def _predict_max_mechanism_rates(self):
-        """
-        This function does two things:
-         - Predict the maximum observed rate of all active mechanism
-         - Set the pKa and pKaH (if applicable)
-        This function doesn't return anything, it simply sets values for the class instance
-        """
-        self.k1 = self._mechanism_rate(self._extract_delta_E("k1"), "k1")
-        self.k2 = self._mechanism_rate(self._extract_delta_E("k2"), "k2")
-        self.k2Ar = self._mechanism_rate(self._extract_delta_E("k2Ar"), "k2Ar")
-        self.k2cat = self._mechanism_rate(self._extract_delta_E("k2cat"), "k2cat")
-        self.k3 = self._mechanism_rate(self._extract_delta_E("k3"), "k3")
-        self.k4 = self._mechanism_rate(self._extract_delta_E("k4"), "k4")
-        self.k5 = self._mechanism_rate(self._extract_delta_E("k5"), "k5")
-
-        # pKa and pKaH info:
-        df = pd.read_csv(f"data/Cox-molecules/Cox-molecules-overview.csv")
-
-        # set pKa and pKaH values
-        if self.molecule_ID < 100:  # It's a Cox molecule
-            # remove all rate measurements that aren't about the query molecule
-            df = df[df.molecule_number == self.molecule_ID]
-            self.pKa = list(df["pKa"])[0]
-            self.pKaH = list(df["pKaH"])[0]
-        elif self.molecule_ID >= 100:  # It's a novel molecule
-            # simply use the average pKa and pKaH of all the Cox molecules
-            pKa_series = df["pKa"].dropna()
-            self.pKa = sum(list(pKa_series)) / len(list(pKa_series))
-            pKaH_series = df["pKaH"].dropna()
-            self.pKaH = sum(list(pKaH_series)) / len(list(pKaH_series))
+    def __init__(self, k1, k2, k2Ar, k2cat, k3, k4, k5, pKa, pKaH=None ):
+        self.k1 = self._mechanism_rate(k1, 'k1')
+        self.k2 = self._mechanism_rate(k2, 'k2')
+        self.k2Ar = self._mechanism_rate(k2Ar, 'k2Ar')
+        self.k2cat = self._mechanism_rate(k2cat, 'k2cat') 
+        self.k3 = self._mechanism_rate(k3, 'k3')
+        self.k4 = self._mechanism_rate(k4, 'k4')
+        self.k5 = self._mechanism_rate(k5, 'k5')
+        self.pKa = pKa
+        self.pKaH = pKaH
 
     def _mechanism_rate(self, delta_E, mechanism):
         """
@@ -77,29 +30,13 @@ class BoronicAcid:
         """
         # if delta_E is none, return nothing, else calculate the mechanism rate
         if delta_E != None:
-            df = pd.read_csv(f"data/Cox-molecules/{mechanism}.csv")
-            # remove molecule_ID from the dataset
-            # i.e. ensure that data about the test molecule isn't used for training
-            training_df = df[df["molecule_number"] != self.molecule_ID]
-
-            # also remove any rows containing null values
-            training_df = training_df[training_df.delta_E.notnull()]
-            training_df = training_df[training_df.k_obs_max.notnull()]
-
-            # extract the transition state energy and rate data and transform to np.array
-            delta_E_training = np.array(training_df["delta_E"]).reshape((-1, 1))
-            k_obs_training = np.array(training_df["k_obs_max"])
-
-            # train linear regression model
-            max_rate_prediction_model = LinearRegression().fit(
-                delta_E_training, k_obs_training
-            )
-
-            # evaluation of model:
-            # max_rate_prediction_model.score(delta_E, k_obs)
+            # Load model
+            filename = f"models/{mechanism}_model.sav"
+            loaded_model = pickle.load(open(filename, 'rb'))
+            
 
             # predicted max rate of this mechanism
-            predicted_max_rate = max_rate_prediction_model.predict(
+            predicted_max_rate = loaded_model.predict(
                 np.array(delta_E).reshape(1, -1)
             )
             predicted_max_rate = predicted_max_rate[0]
@@ -189,7 +126,7 @@ class BoronicAcid:
 
         return k_obs
 
-    def plot_result(self):
+    def plot_result(self,title):
         """
         Plot the predicted (solid blue) and measured (green dots) log(k) vs pH
 
@@ -207,21 +144,11 @@ class BoronicAcid:
             X_pred += [pH]
             y_pred += [self.total_rate_point_predictor(pH)]
 
-        if self.molecule_ID < 100:
-            # remove all rate measurements that aren't about the query molecule
-            df = pd.read_csv(f"data/Cox-molecules/Cox-molecules-data.csv")
-            query_molecule_df = df[df.molecule_number == self.molecule_ID]
-
-            X = query_molecule_df["pH"]
-            y = query_molecule_df["log(k_obs)"]
-            plt.plot(X, y, "go", label="Measured rate")
-
         plt.plot(X_pred, y_pred, "b-", label="Predicted rate")
-        # plt.title(self.molecule_ID)
-        # plt.legend(prop={"size":12})
-        # plt.ylim([-10,2])
+        plt.legend(prop={"size":12})
+        plt.ylim([-10,2])
 
-        plt.title(self.molecule_ID, fontdict={"fontsize": 18})
+        plt.title(title, fontdict={"fontsize": 18})
         plt.legend(prop={"size": 12})
         plt.xticks(fontsize=14)
         plt.yticks(fontsize=14)
