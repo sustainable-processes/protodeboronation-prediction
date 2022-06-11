@@ -1,4 +1,4 @@
-﻿molecule_number,Mol num,SMILES,"pka (h2O/dioxane, 70C)",pKa (fitted),"pKaH (fitted, 70C)","pKaH (NMR, 25C)",pH,log(k_obs),T (celcius),Solvents,Ratio of solvents,Percent zwitterion at pH 5.0-5.5,Concentration (mol/L),Notes
+﻿molecule_number,Mol num,smiles,"pka (h2O/dioxane, 70C)",pKa (fitted),"pKaH (fitted, 70C)","pKaH (NMR, 25C)",pH,log(k_obs),T (celcius),Solvents,Ratio of solvents,Percent zwitterion at pH 5.0-5.5,Concentration (mol/L),Notes
 44,1,OB(O)c1ccccn1,10.76,,3.52,3.86,0.95,-4.01,70,"water, dioxane",50/50,95%,0.05,NB: All data from cox PhD
 44,1,OB(O)c1ccccn1,10.76,,3.52,3.86,1.09,-3.91,70,"water, dioxane",50/50,95%,0.05,Some temperatures are 90 degrees C!
 44,1,OB(O)c1ccccn1,10.76,,3.52,3.86,1.3,-3.78,70,"water, dioxane",50/50,95%,0.05,
