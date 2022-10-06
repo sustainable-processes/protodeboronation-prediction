@@ -18,3 +18,6 @@ The DFT_utilities.py contains useful functions for performing DFT calculations. 
  - Extract the optimised energy from a .log output file
 
 For any questions please feel free to open an issue.
+
+## Figure_generation
+The figure_generation.ipynb file contains the code used to generate the figures found in the paper and SI.
