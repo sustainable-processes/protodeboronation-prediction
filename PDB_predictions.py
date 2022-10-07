@@ -10,7 +10,7 @@
 # The BoronicAcid constructor takes the DFT calculated energy for the 
 #   active mechanistic pathways, all other mechanistic pathways should 
 #   be set to None.
-#       Example: k1 = 0.0152523, k2 = -0.03231252, k2Ar = None, (...)
+#       Example: k1 = -0.022129365 k2 = 0.037592502, k2Ar = None, (...)
 #
 # The KnownBoronicAcid constructor simply takes the molecular ID of a molecule
 #   (which can be found in the paper), and automatically extracts the relevant 
@@ -321,9 +321,9 @@ class KnownBoronicAcid(BoronicAcid):
 
             X = query_molecule_df["pH"]
             y = query_molecule_df["log(k_obs)"]
-            plt.plot(X, y, "go", label="Measured rate")
-        
-        return f
+            
+            return  plt.plot(X, y, "go", label="Measured rate")
 
+        #return f
         
         
