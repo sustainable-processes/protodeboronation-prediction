@@ -3,7 +3,7 @@
 This repository contains the code for the paper: "Quantitative in silico prediction of the rate of protodeboronation by a mechanistic DFT-aided algorithm"
 
 ## Data
-This folder contains all relevant data to reproduce the results & predictions presented in the paper above, including DFT energy calculations, pKa and pKaH values, and an overview of the mechanistic pathways active for all of the 100 molecules under consideration (determined with hueristics).
+This folder contains all relevant data to reproduce the results & predictions presented in the paper above, including the DFT generated output files (containing initial geometry, optimised geometry, and the energy of the optimised geometry), pKa and pKaH values, and an overview of the mechanistic pathways active for all of the 100 molecules under consideration (determined with hueristics).
 
 ## Models
 For the sake of reproducibility, we have also included a save of all the linear models trained for this work. Do note that training a linear model on a few dozen datapoints takes less than a second, so this may as well be done in real time
