@@ -24,6 +24,9 @@ import matplotlib.pyplot as plt
 import math
 import pickle
 
+from matplotlib.offsetbox import (OffsetImage, AnnotationBbox)
+import matplotlib.image as image
+
 
 class BoronicAcid:
     def __init__(self, k1, k2, k2Ar, k2cat, k3, k4, k5, pKa, pKaH, smiles=None):
@@ -36,12 +39,28 @@ class BoronicAcid:
         self.k5 = self._mechanism_rate(k5, 'k5')
         self.pKa = pKa
         self.pKaH = pKaH #set to None if there is no pKaH value
+
     
     def __repr__(self) -> str:
         return "BoronicAcid({}, {}, {}, {}, {}, {}, {}, {}, {})".format(self.k1, self.k2, self.k2Ar, self.k2cat, self.k3, self.k4, self.k5, self.pKa, self.pKaH)
 
     # def __str__(self) -> str:
     #     pass
+    
+    def set_plt_options(self, title):
+        big = 20
+        med = 16
+        small = 14
+
+        plt.title(title, fontdict={"fontsize": big})
+        plt.legend(prop={"size": small})
+        plt.xticks(fontsize=med)
+        plt.yticks(fontsize=med)
+        plt.ylim([-10, 2.2])
+        plt.xlabel("pH", fontdict={"fontsize": med})
+        plt.ylabel("log(k)", fontdict={"fontsize": med})
+        plt.tight_layout()
+
 
     def _get_model(self, mechanism):
         filename = f"models/{mechanism}_model.sav"
@@ -156,9 +175,9 @@ class BoronicAcid:
         Measured data is only available for the 50 Cox molecules, so the measured
             rate will obviously only be plotted when choosing one of these 50 molecules
         """
-
-        fig_size = (10, 5)
-        f = plt.figure(figsize=fig_size)
+        plt.close()
+        f = plt.figure()
+        f.set_size_inches(8, 5)
 
         X_pred = []
         y_pred = []
@@ -168,17 +187,8 @@ class BoronicAcid:
             y_pred += [self.total_rate_point_predictor(pH)]
 
         plt.plot(X_pred, y_pred, "b-", label="Predicted rate")
-        plt.legend(prop={"size":12})
-        plt.ylim([-10,2])
-
-        plt.title(title, fontdict={"fontsize": 18})
-        plt.legend(prop={"size": 12})
-        plt.xticks(fontsize=14)
-        plt.yticks(fontsize=14)
-        plt.ylim([-10, 2.2])
-        plt.xlabel("pH", fontdict={"fontsize": 14})
-        plt.ylabel("log(k)", fontdict={"fontsize": 14})
-        plt.tight_layout()
+        
+        self.set_plt_options(title)
 
         return f
     
@@ -213,7 +223,7 @@ class BoronicAcid:
 class KnownBoronicAcid(BoronicAcid):
     #This class allows us to reproduce the results shown in the paper by pulling
     #   data from the csv file, using just molecule ID
-    def __init__(self, molecule_ID):
+    def __init__(self, molecule_ID): 
         self.molecule_ID = molecule_ID
         
         # set all the mechanism rates
@@ -311,8 +321,35 @@ class KnownBoronicAcid(BoronicAcid):
     def plot_result(self):
 
         title = self.molecule_ID
+        #Name of molecule 61
+        #title = '(3,5-dimethyl-1,2-oxazol-4-yl)boronic acid'
+        
 
         f = super().plot_result(title)
+        
+        # Add a picture of the molecule to the graph
+        
+        #Read the image from file into an array of binary format
+        molecule_picture = f"figures/molecules/{self.molecule_ID}.png"
+
+        mol_pic = image.imread(molecule_picture)
+        
+        #The OffsetBox is a simple container artist.
+        #The child artists are meant to be drawn at a relative position to its parent.
+        imagebox = OffsetImage(mol_pic, zoom = 0.35)
+
+        #Annotation box 
+        #Container for an `OffsetBox` (here imagebox) referring to a specific position *xy*.
+        if self.molecule_ID in [66, 72, 87, 89,  90, 95, 102, 103, 111, 148]:
+            mol_placement = (12.5, -7) # bottom right
+        elif self.molecule_ID in [44, 69, 70, 125, 132, 144, 145, 146, ]:
+            mol_placement = (7, -7) # bottom middle
+        else:             
+            mol_placement = (1.5,-0.5)   #top left
+        
+        ab = AnnotationBbox(imagebox, mol_placement, frameon = False)
+        
+        
 
         if self.molecule_ID < 100:
             # remove all rate measurements that aren't about the query molecule
@@ -322,8 +359,22 @@ class KnownBoronicAcid(BoronicAcid):
             X = query_molecule_df["pH"]
             y = query_molecule_df["log(k_obs)"]
             
-            return  plt.plot(X, y, "go", label="Measured rate")
-
-        #return f
+            ax = f.gca()  # get the current axis
+            ax.plot(X, y, "go", label="Measured rate")
+            ax.add_artist(ab)
+            
+            self.set_plt_options(title)
+            f.set_size_inches(8, 5)
+            
+            plt.savefig(f'figures/Cox/{self.molecule_ID}.png', dpi=600)
+                        
+        elif self.molecule_ID >= 100:
+            ax = f.gca()  # get the current axis
+            ax.add_artist(ab)
+            
+            self.set_plt_options(title)
+            f.set_size_inches(8, 5)
+            
+            plt.savefig(f'figures/novel/{self.molecule_ID}.png', dpi=600)
         
         

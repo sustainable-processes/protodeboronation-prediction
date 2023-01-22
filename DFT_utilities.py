@@ -147,16 +147,18 @@ def prepare_coordinates_for_SI(mol_num, mechanism, role, log_file_path):
     #The basis set used is simplified to B3LYP in the case of k2cat.
     #The solvent used is simplified to in vacuo (as opposed to water) in the case of k2cat
     
-    if mechanism != 'k2cat':
+    if 'k2cat' not in mechanism:
         if role == 'TS' or role == 'Transition State':
             list_of_lines += ['#n M06L/6-311++G** SCRF=(Solvent=Water) Opt=(TS,CalcFC,noeigentest)']
         elif role != 'TS':
             list_of_lines += ['#n M06L/6-311++G** SCRF=(Solvent=Water) Opt']
-    elif mechanism == 'k2cat':
+    elif mechanism == 'k2cat_B3LYP':
         if role == 'TS' or role == 'Transition State':
             list_of_lines += ['#n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)']
         elif role != 'TS':
             list_of_lines += ['#n B3LYP/6-31G(d) Opt']
+    elif mechanism == 'k2cat_M06L':
+        list_of_lines += ['#n M06L/6-311++G**']
     
     # insert energy:
     energy = read_energy(log_file_path)

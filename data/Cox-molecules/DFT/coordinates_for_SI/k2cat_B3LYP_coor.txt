@@ -1,5 +1,5 @@
 \begin{lstlisting}
-Molecule 0: k2cat - Misc. small molecule
+Molecule 0: k2cat_B3LYP - Misc. small molecule
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -216.51957507
 Charge, multiplicity: 0, 1
@@ -15,7 +15,7 @@ O -0.730603    1.200368   -0.00001
 H -1.695214    1.113949    0.00039
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 50: k2cat - Transition State
+Molecule 50: k2cat_B3LYP - Transition State
 #n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)
 E(RB3LYP) =  -1021.4129105
 Charge, multiplicity: -1, 1
@@ -46,7 +46,7 @@ H  3.664722   -2.964444   -0.36584
 H  4.821277   -1.811389    0.33301
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 50: k2cat - Intermediate
+Molecule 50: k2cat_B3LYP - Intermediate
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -804.87817685
 Charge, multiplicity: -1, 1
@@ -68,7 +68,7 @@ H -2.897775   -1.897744    0.00878
 H -0.591207    2.055610   -0.01066
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 51: k2cat - Transition State
+Molecule 51: k2cat_B3LYP - Transition State
 #n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)
 E(RB3LYP) =  -698.43493712
 Charge, multiplicity: -1, 1
@@ -99,7 +99,7 @@ H  4.779330   -1.091564    0.35343
 H  4.381833   -0.900833   -1.37187
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 51: k2cat - Intermediate
+Molecule 51: k2cat_B3LYP - Intermediate
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -481.89718042
 Charge, multiplicity: -1, 1
@@ -121,7 +121,7 @@ H -3.483256    1.206429   -0.00435
 H -3.123948   -1.520729   -0.05225
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 52: k2cat - Transition State
+Molecule 52: k2cat_B3LYP - Transition State
 #n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)
 E(RB3LYP) =  -1021.4224803
 Charge, multiplicity: -1, 1
@@ -152,7 +152,7 @@ H  4.890479   -1.454193    0.24423
 H  4.381414   -1.354533   -1.45948
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 52: k2cat - Intermediate
+Molecule 52: k2cat_B3LYP - Intermediate
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -804.88202172
 Charge, multiplicity: -1, 1
@@ -174,7 +174,7 @@ H -3.106050    1.879817   -0.07171
 H -3.606318   -0.710969   -0.05382
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 54: k2cat - Transition State
+Molecule 54: k2cat_B3LYP - Transition State
 #n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)
 E(RB3LYP) =  -546.98354556
 Charge, multiplicity: -1, 1
@@ -202,7 +202,7 @@ H -4.037931    0.746821   -0.72883
 H -3.886765   -0.981288   -0.99727
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 54: k2cat - Intermediate
+Molecule 54: k2cat_B3LYP - Intermediate
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -330.45008571
 Charge, multiplicity: -1, 1
@@ -221,7 +221,7 @@ H -0.832235    1.732231   -0.67257
 H -1.422861    0.189172    1.62426
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 55: k2cat - Transition State
+Molecule 55: k2cat_B3LYP - Transition State
 #n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)
 E(RB3LYP) =  -586.27859345
 Charge, multiplicity: -1, 1
@@ -252,7 +252,7 @@ H -4.667281   -0.306356    0.08341
 H -3.795718   -1.385617    1.20157
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 55: k2cat - Intermediate
+Molecule 55: k2cat_B3LYP - Intermediate
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -369.75287067
 Charge, multiplicity: -1, 1
@@ -274,7 +274,7 @@ H  1.662150   -1.114546    1.13404
 H  2.691131   -1.309257   -0.36842
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 56: k2cat - Transition State
+Molecule 56: k2cat_B3LYP - Transition State
 #n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)
 E(RB3LYP) =  -508.89617880
 Charge, multiplicity: -1, 1
@@ -301,7 +301,7 @@ H -1.695047    0.920450   -1.92707
 H -1.710250    2.226206   -0.74091
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 56: k2cat - Intermediate
+Molecule 56: k2cat_B3LYP - Intermediate
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -292.36377005
 Charge, multiplicity: -1, 1
@@ -319,7 +319,7 @@ H  1.473251    0.053503    1.30352
 H  0.042089    1.965103   -0.09330
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 57: k2cat - Transition State
+Molecule 57: k2cat_B3LYP - Transition State
 #n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)
 E(RB3LYP) =  -625.59350177
 Charge, multiplicity: -1, 1
@@ -353,7 +353,7 @@ H -3.836009    1.784652   -0.52663
 H -4.288541    0.166333   -1.03286
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 57: k2cat - Intermediate
+Molecule 57: k2cat_B3LYP - Intermediate
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -409.06949398
 Charge, multiplicity: -1, 1
@@ -378,7 +378,7 @@ H -1.672543   -1.971477    0.62767
 H -1.171699   -1.399403   -0.98473
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 58: k2cat - Transition State
+Molecule 58: k2cat_B3LYP - Transition State
 #n B3LYP/6-31G(d) Opt=(TS,CalcFC,noeigentest)
 E(RB3LYP) =  -704.24328797
 Charge, multiplicity: -1, 1
@@ -418,7 +418,7 @@ H  5.173403   -1.165153    0.01140
 H  4.931674    0.592008   -0.02740
 \end{lstlisting}
 \begin{lstlisting}
-Molecule 58: k2cat - Intermediate
+Molecule 58: k2cat_B3LYP - Intermediate
 #n B3LYP/6-31G(d) Opt
 E(RB3LYP) =  -487.72682843
 Charge, multiplicity: -1, 1
