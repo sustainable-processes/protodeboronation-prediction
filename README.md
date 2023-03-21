@@ -25,3 +25,24 @@ For any questions please feel free to open an issue.
 
 ## Figure_generation
 The figure_generation.ipynb file contains the code used to generate the figures found in the paper and SI.
+
+## Citing
+
+If you find this project useful, we encourage you to
+
+* Star this repository :star: 
+* Cite our [paper](https://doi.org/10.1021/acs.jpca.2c08250).
+```
+@article{wigh_quantitative_2023,
+	title = {Quantitative {In} {Silico} {Prediction} of the {Rate} of {Protodeboronation} by a {Mechanistic} {Density} {Functional} {Theory}-{Aided} {Algorithm}},
+	issn = {1089-5639},
+	url = {https://doi.org/10.1021/acs.jpca.2c08250},
+	doi = {10.1021/acs.jpca.2c08250},
+	urldate = {2023-03-19},
+	journal = {The Journal of Physical Chemistry A},
+	author = {Wigh, Daniel S. and Tissot, Matthieu and Pasau, Patrick and Goodman, Jonathan M. and Lapkin, Alexei A.},
+	month = mar,
+	year = {2023},
+}
+```
+
