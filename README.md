@@ -1,3 +1,7 @@
+<a target="_blank" href="https://colab.research.google.com/github/sustainable-processes/protodeboronation-prediction/blob/main/PDB-prediction.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 # Protodeboronation prediction & DFT utilities
 
 This repository contains the code for the paper: "Quantitative in silico prediction of the rate of protodeboronation by a mechanistic DFT-aided algorithm"
