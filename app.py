@@ -7,8 +7,8 @@ from pathlib import Path
 
 path = Path(__file__).parent
 
-novel_path = path / "data/novel-molecules/novel-molecules-data.csv"
 cox_path = path / "data/Cox-molecules/Cox-molecules-overview.csv"
+novel_path = path / "data//novel-molecules/novel-molecules-data.csv"
 
 
 
