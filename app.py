@@ -8,8 +8,7 @@ from pathlib import Path
 path = Path(__file__).parent
 
 cox_path = path / "data/Cox-molecules/Cox-molecules-overview.csv"
-novel_path = path / "data/Cox-molecules/Cox-molecules-overview.csv"
-#novel_path = path / r"data/novel-molecules/novel-molecules-data.csv"
+novel_path = path / r"data/Novel-molecules/Novel-molecules-data.csv"
 
 def _smiles_to_num_dict():
     cox_molecules_data = pd.read_csv(cox_path)
