@@ -6,11 +6,25 @@ import rdkit.Chem.Draw
 from pathlib import Path
 
 path = Path(__file__).parent
-st.write(path)
-directories = path.glob('*/')
-st.write(directories)
+
 cox_path = path / "data/Cox-molecules/Cox-molecules-overview.csv"
 novel_path = path / "data/novel-molecules/novel-molecules-data.csv"
+
+
+
+# Specify the directory where you want to start the search
+start_directory = Path('.')  # Current directory
+
+# Use glob to recursively search for folders named 'data'
+# '**' means this is a recursive search
+# Use 'data/' to specifically search for directories named 'data'
+matches = start_directory.glob('**/data/')
+
+# Iterate through matches and print them
+for match in matches:
+    if match.is_dir():  # Check if it's a directory, just to be sure
+        st.write(match)
+
 
 
 def _smiles_to_num_dict():
