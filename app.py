@@ -5,12 +5,14 @@ from rdkit import DataStructs
 import rdkit.Chem.Draw
 from pathlib import Path
 
-path = Path(__file__).parent[0]
+path = Path(__file__).parent
+cox_path = path / "data/Cox-molecules/Cox-molecules-overview.csv"
+novel_path = path / "data/novel-molecules/novel-molecules-data.csv"
 
 
 def _smiles_to_num_dict():
-    cox_molecules_data = pd.read_csv(path / "data/Cox-molecules/Cox-molecules-overview.csv")
-    novel_molecules_data = pd.read_csv(path / "data/novel-molecules/novel-molecules-data.csv")
+    cox_molecules_data = pd.read_csv(cox_path)
+    novel_molecules_data = pd.read_csv(novel_path)
     smiles_to_num_dict = {}
     for smiles, molecule_number in zip(cox_molecules_data["smiles"].values, cox_molecules_data["molecule_number"].values):
         smiles_to_num_dict[smiles] = molecule_number
