@@ -6,6 +6,9 @@ import rdkit.Chem.Draw
 from pathlib import Path
 
 path = Path(__file__).parent
+st.write(path)
+directories = path.glob('*/')
+st.write(directories)
 cox_path = path / "data/Cox-molecules/Cox-molecules-overview.csv"
 novel_path = path / "data/novel-molecules/novel-molecules-data.csv"
 
