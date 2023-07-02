@@ -2,6 +2,7 @@ import streamlit as st
 from rdkit import Chem
 import pandas as pd
 from rdkit import DataStructs
+import rdkit.Chem.Draw
 from pathlib import Path
 
 path = Path(__file__).parent
@@ -107,7 +108,7 @@ def main():
                             st.write("Queried Structure")
                             mol = Chem.MolFromSmiles(smiles)
                             if mol:
-                                image = Chem.Draw.MolToImage(mol)
+                                image = rdkit.Chem.Draw.MolToImage(mol)
                                 st.image(image, caption='Queried Structure', use_column_width=True)
                             else:
                                 st.write("Invalid SMILES input!")
@@ -116,7 +117,7 @@ def main():
                             st.write("Most Similar Structure")
                             mol = Chem.MolFromSmiles(most_similar)
                             if mol:
-                                image = Chem.Draw.MolToImage(mol)
+                                image = rdkit.Chem.Draw.MolToImage(mol)
                                 st.image(image, caption='Most Similar Structure', use_column_width=True)
                             else:
                                 st.write("No similar structure found!")
