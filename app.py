@@ -14,22 +14,22 @@ novel_path = path / "data/novel-molecules/novel-molecules-data.csv"
 
 def print_folder_structure(directory, indent=0):
     """
-    Recursively print the folder structure.
+    Recursively print the folder structure with full paths.
 
     :param directory: The directory to start at.
     :param indent: The indentation level (starts at 0).
     """
-    # Print the current directory
-    print('  ' * indent + f'[{directory.name}]')
+    # Print the current directory with full path
+    st.write('  ' * indent + f'[{directory.absolute()}]')
 
     # Loop through all items in the current directory
     for item in directory.iterdir():
         # If it's a directory, recursively call this function
         if item.is_dir():
             print_folder_structure(item, indent + 1)
-        # If it's a file, just print it
+        # If it's a file, just print it with full path
         else:
-            st.write('  ' * (indent + 1) + item.name)
+            st.write('  ' * (indent + 1) + str(item.absolute()))
 
 # Specify the directory where you want to start printing the folder structure
 start_directory = Path('.')
