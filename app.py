@@ -15,9 +15,13 @@ def _smiles_to_num_dict():
     novel_molecules_data = pd.read_csv(novel_path)
     smiles_to_num_dict = {}
     for smiles, molecule_number in zip(cox_molecules_data["smiles"].values, cox_molecules_data["molecule_number"].values):
+        # canon smiles
+        smiles = Chem.MolToSmiles(Chem.MolFromSmiles(smiles))
         smiles_to_num_dict[smiles] = molecule_number
 
     for smiles, molecule_number in zip(novel_molecules_data["smiles"].values, novel_molecules_data["molecule_number"].values):
+        # canon smiles
+        smiles = Chem.MolToSmiles(Chem.MolFromSmiles(smiles))
         smiles_to_num_dict[smiles] = molecule_number
         
     return smiles_to_num_dict
