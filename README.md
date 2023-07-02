@@ -2,6 +2,10 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://protodeboronation-prediction.streamlit.app/)
+
+
+
 # Protodeboronation prediction & DFT utilities
 
 This repository contains the code for the paper: "Quantitative in silico prediction of the rate of protodeboronation by a mechanistic DFT-aided algorithm"
