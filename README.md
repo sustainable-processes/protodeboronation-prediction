@@ -1,8 +1,8 @@
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://protodeboronation-prediction.streamlit.app/)
 <a target="_blank" href="https://colab.research.google.com/github/sustainable-processes/protodeboronation-prediction/blob/main/PDB-prediction.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://protodeboronation-prediction.streamlit.app/)
 
 
 
