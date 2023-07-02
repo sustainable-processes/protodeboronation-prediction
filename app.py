@@ -12,17 +12,17 @@ novel_path = path / "data/novel-molecules/novel-molecules-data.csv"
 
 
 
-# Specify the directory where you want to start the search
-start_directory = Path('.')  # Current directory
+start_directory = Path('.')
 
-# Use glob to recursively search for folders named 'data'
+# Use glob to recursively search for folders named 'novel-molecules'
 # '**' means this is a recursive search
-# Use 'data/' to specifically search for directories named 'data'
-matches = start_directory.glob('**/data/novel-molecules/')
+# Use 'novel-molecules/' to specifically search for directories named 'novel-molecules'
+matches = start_directory.glob('**/novel-molecules/')
 
 # Iterate through matches and print them
 for match in matches:
-    st.write(match)
+    if match.is_dir():  # Check if it's a directory, just to be sure
+        print(match)
 
 
 
