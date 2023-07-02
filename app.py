@@ -1,6 +1,5 @@
 import streamlit as st
 from rdkit import Chem
-from rdkit.Chem import Draw
 import pandas as pd
 from rdkit import DataStructs
 
@@ -105,7 +104,7 @@ def main():
                             st.write("Queried Structure")
                             mol = Chem.MolFromSmiles(smiles)
                             if mol:
-                                image = Draw.MolToImage(mol)
+                                image = Chem.Draw.MolToImage(mol)
                                 st.image(image, caption='Queried Structure', use_column_width=True)
                             else:
                                 st.write("Invalid SMILES input!")
@@ -114,7 +113,7 @@ def main():
                             st.write("Most Similar Structure")
                             mol = Chem.MolFromSmiles(most_similar)
                             if mol:
-                                image = Draw.MolToImage(mol)
+                                image = Chem.Draw.MolToImage(mol)
                                 st.image(image, caption='Most Similar Structure', use_column_width=True)
                             else:
                                 st.write("No similar structure found!")
