@@ -5,3 +5,4 @@ pandas==2.0.3
 rdkit==2023.3.2
 scikit_learn==1.3.0
 streamlit==1.24.0
+libXrender1
