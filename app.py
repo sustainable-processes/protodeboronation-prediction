@@ -5,7 +5,8 @@ from rdkit import DataStructs
 import rdkit.Chem.Draw
 from pathlib import Path
 
-path = Path(__file__).parent
+path = Path(__file__).parent[0]
+
 
 def _smiles_to_num_dict():
     cox_molecules_data = pd.read_csv(path / "data/Cox-molecules/Cox-molecules-overview.csv")
