@@ -18,12 +18,11 @@ start_directory = Path('.')  # Current directory
 # Use glob to recursively search for folders named 'data'
 # '**' means this is a recursive search
 # Use 'data/' to specifically search for directories named 'data'
-matches = start_directory.glob('**/data/')
+matches = start_directory.glob('**/data/novel-molecules/novel-molecules-data.csv')
 
 # Iterate through matches and print them
 for match in matches:
-    if match.is_dir():  # Check if it's a directory, just to be sure
-        st.write(match)
+    st.write(match)
 
 
 
