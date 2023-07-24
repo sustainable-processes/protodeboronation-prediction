@@ -55,7 +55,8 @@ def _find_most_similar(smiles, smiles_to_num_dict):
     
 def main():
     st.title("Protodeboronation Prediction")
-    st.write("Protodeboronation can be a big problem in cross-coupling reactions that use boronic acids (see example below). This website helps you by predicting the rate of protodeboronation for your molecule of interest! If you found this work helpful, please consider citing our [our paper](https://doi.org/10.1021/acs.jpca.2c08250)")
+    st.write("Protodeboronation can be a big problem in cross-coupling reactions that use boronic acids (see example below). This website helps you by predicting the rate of protodeboronation for your molecule of interest! If you found this work helpful, please consider citing our [our paper](https://doi.org/10.1021/acs.jpca.2c08250).")
+    st.write("Feel free to reach out to me, Daniel Wigh, at dsw46@cam.ac.uk")
     # Displaying an image
     image = 'figures/pdb_example.png'
     st.image(image, caption='Suzuki reaction with protodeboronation.', use_column_width=True)
