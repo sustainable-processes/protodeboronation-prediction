@@ -55,15 +55,7 @@ def _find_most_similar(smiles, smiles_to_num_dict):
     else:
         return None
     
-def smiles_generator_tool():
-    st.write("#### Draw a molecule")
-    
-    smiles = st_ketcher()
-    st.write("SMILES:", smiles)
 
-    st.write("\n---\n")
-    return smiles
-    
 def main():
     st.title("Protodeboronation Prediction")
     st.write("Protodeboronation can be a big problem in cross-coupling reactions that use boronic acids (see example below). This website helps you by predicting the rate of protodeboronation for your molecule of interest! If you found this work helpful, please consider citing our [our paper](https://doi.org/10.1021/acs.jpca.2c08250).")
@@ -82,8 +74,16 @@ def main():
     # # Text input field
     # smiles = st.text_input("Enter boronic acid SMILES:", value="Cc1noc(C)c1B(O)O")
     
-    smiles = smiles_generator_tool()
+    st.write("#### Draw a molecule")
     
+    DEFAULT_SMILES = "Cc1noc(C)c1B(O)O"
+    # molecule = st.text_input("Molecule", DEFAULT_MOL)
+    smiles = st_ketcher(DEFAULT_SMILES)
+    st.write("SMILES:", smiles)
+
+    st.write("\n---\n")
+    
+        
     #canon smiles
     mol = Chem.MolFromSmiles(smiles)
     if mol is not None:
