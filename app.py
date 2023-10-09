@@ -4,6 +4,8 @@ import pandas as pd
 from rdkit import DataStructs
 import rdkit.Chem.Draw
 from pathlib import Path
+from streamlit_ketcher import st_ketcher
+
 
 path = Path(__file__).parent
 
@@ -53,6 +55,15 @@ def _find_most_similar(smiles, smiles_to_num_dict):
     else:
         return None
     
+def smiles_generator_tool():
+    st.write("#### Draw a molecule")
+    
+    smiles = st_ketcher()
+    st.write("SMILES:", smiles)
+
+    st.write("\n---\n")
+    return smiles
+    
 def main():
     st.title("Protodeboronation Prediction")
     st.write("Protodeboronation can be a big problem in cross-coupling reactions that use boronic acids (see example below). This website helps you by predicting the rate of protodeboronation for your molecule of interest! If you found this work helpful, please consider citing our [our paper](https://doi.org/10.1021/acs.jpca.2c08250).")
@@ -61,15 +72,17 @@ def main():
     image = 'figures/pdb_example.png'
     st.image(image, caption='Suzuki reaction with protodeboronation.', use_column_width=True)
     
-    # Instructions expander
-    with st.expander("How do I find the SMILES of my molecule?"):
-        st.write('- Step 1: Google the name of your molecule (e.g. "(3,5-Dimethyl-1,2-oxazol-4-yl)boronic Acid")')
-        st.write("- Step 2: Click a suitable link (e.g. PubChem, Wikipedia, Sigma Aldrich)")
-        st.write('- Step 3: Click "Ctrl + F" ("Cmd + F" on mac) and search for "SMILES"')
-        st.write("To learn more about molecular representation and SMILES, check out [this paper]( https://doi.org/10.1002/wcms.1603).")
+    # # Instructions expander
+    # with st.expander("How do I find the SMILES of my molecule?"):
+    #     st.write('- Step 1: Google the name of your molecule (e.g. "(3,5-Dimethyl-1,2-oxazol-4-yl)boronic Acid")')
+    #     st.write("- Step 2: Click a suitable link (e.g. PubChem, Wikipedia, Sigma Aldrich)")
+    #     st.write('- Step 3: Click "Ctrl + F" ("Cmd + F" on mac) and search for "SMILES"')
+    #     st.write("To learn more about molecular representation and SMILES, check out [this paper]( https://doi.org/10.1002/wcms.1603).")
     
-    # Text input field
-    smiles = st.text_input("Enter boronic acid SMILES:", value="Cc1noc(C)c1B(O)O")
+    # # Text input field
+    # smiles = st.text_input("Enter boronic acid SMILES:", value="Cc1noc(C)c1B(O)O")
+    
+    smiles = smiles_generator_tool()
     
     #canon smiles
     mol = Chem.MolFromSmiles(smiles)
